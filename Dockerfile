@@ -1,13 +1,16 @@
-FROM openjdk:17-jdk-slim AS build
+FROM ubuntu:latest AS build
 
-COPY pom.xml mvnw ./
-COPY .mvn .mvn
-RUN ./mvnw dependency:resolve
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
+COPY . .
 
-COPY src src
-RUN ./mvnw package
+RUN apt-get install maven -y
+RUN mvn clean install
 
 FROM openjdk:17-jdk-slim
-WORKDIR sistemamatricula
-COPY --from=build target/*.jar sistemamatricula.jar
-ENTRYPOINT ["java", "-jar", "sistemamatricula.jar"]
+
+EXPOSE 8080
+
+COPY --from=build /target/sistemamatricula-1.0.0.jar app.jar
+
+ENTRYPOINT [ "java", "-jar", "app.jar" ]
