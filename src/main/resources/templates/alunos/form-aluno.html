@@ -14,7 +14,7 @@
 
     <p class="h4 mb-4">Novo Aluno</p>
 
-    <form action="#" th:action="@{/alunos/salvar}"  th:object="${aluno}" method="POST">
+    <form action="#" th:action="@{/alunos/salvarAluno}"  th:object="${aluno}" method="POST">
         <input type="hidden" th:field="*{id}">
         <input type="text" class="form-control mb-4 w-25" placeholder="CPF" th:field="*{cpf}" />
         <input type="text" class="form-control mb-4 w-25" placeholder="Nome" th:field="*{nome}" />
