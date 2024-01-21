@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Aluno</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <h3>Alunos</h3>
+    <hr>
+
+    <p class="h4 mb-4">Novo Aluno</p>
+
+    <form action="#" th:action="@{/alunos/salvar}"  th:object="${aluno}" method="POST">
+        <input type="hidden" th:field="*{id}">
+        <input type="text" class="form-control mb-4 w-25" placeholder="CPF" th:field="*{cpf}" />
+        <input type="text" class="form-control mb-4 w-25" placeholder="Nome" th:field="*{nome}" />
+        <input type="text" class="form-control mb-4 w-25" placeholder="Sobrenome" th:field="*{sobrenome}" />
+
+        <button type="submit" class="btn btn-info col-2">Salvar</button>
+    </form>
+
+    <hr>
+    <a th:href="@{/alunos/lista}">voltar</a>
+</div>
+
+</body>
+</html>
